@@ -1,0 +1,43 @@
+<!-- Asignment 03 Question A
+Create new button oo click button -->
+	
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Create Button</title>
+
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+ 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+
+		function createButton(xx)
+		{
+			
+			// remove mouse click event from older button
+			 $("#" + xx.id).removeAttr('onclick');
+			 $('#'+ xx.id).toggleClass("btn-success");
+			 $('#'+ xx.id).toggleClass("btn-primary");
+
+			 // create new button
+			var newbtn = document.createElement("button");
+			newbtn.id = xx.id + 1;
+			newbtn.onclick = function(){createButton(this)};
+			newbtn.appendChild(document.createTextNode("Click me"));
+			$(newbtn).addClass("btn btn-success");
+
+			//append new button in body
+			document.body.appendChild(newbtn);
+			
+		}
+
+	</script>
+</head>
+
+<body>
+	<br>
+	<button class="btn btn-success" id="0" onclick="createButton(this)" >Click me</button>
+</body>
+</html>
